@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>speechSynthesis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="./index_files/main.6af6d832.css" data-asset="main.css">
+  </head>
+  <body>
+
+    <section>
+      <div class="synth" data-synthesize="">
+        <select name="voices" id="voices-select">
+        </select>
+
+        <button type="button" data-btn="play-pause" data-state="paused">Play</button>
+        <button type="button" data-btn="stop">stop</button>
+
+        <br>
+        <br>
+
+        <textarea name="synth-text" id="synth-text" maxlength="32767" required="">Uit het onderzoek wordt duidelijk dat als Henk Harms maandag 16 september 2019 niet ziek was geweest, de affaire waarschijnlijk nooit aan het licht zou zijn gekomen. Maar Harms is die maandag niet op kantoor en dus opent zijn medewerkster zijn mailbox.
+
+Eén bericht valt direct op: een ingehuurde projectdirecteur van Amare spuit zijn gal. Hij mailt Harms dat hij diens spel niet langer mee wil spelen. Een van zijn grieven: op verzoek van Harms zijn verslagen gemaakt van gesprekken die niet hebben plaatsgevonden.
+
+De medewerkster stuurt de e-mail direct door naar DSO-directeur Ronald Nomes, de baas van Harms. Die kan niet anders dan de burgemeester inlichten. Kort daarop schakelt de gemeente Hoffmann in.
+
+Het onlangs afgeleverde rapport beschrijft aan de hand van interviews en interne correspondentie de rol van Harms en de externe projectdirecteur bij DSO.
+
+Het integriteitsonderzoek spitst zich toe op de bouw van de woontorens en het cultuurcomplex Amare, waarover al jaren wordt geruzied in de Haagse politiek en waarvan de kosten voortdurend stijgen. Het gebouw was begroot op 176,6 miljoen euro, maar in 2018 moest verantwoordelijk wethouder Boudewijn Revis (stadsontwikkeling, VVD) de gemeenteraad melden dat de kosten waren opgelopen tot 210,9 miljoen euro. Voor dat bedrag zou Amare echt gebouwd worden – zegde hij de gemeenteraad toe.
+</textarea>
+
+        <strong class="label-volume">Volume</strong>
+        <br>
+        <input data-ui="volume-slider" type="range" min="0" max="1" step="0.1" value="0.75">
+
+        <br>
+        <br>
+        <strong class="label-volume">Pitch</strong>
+        <br>
+        <input data-ui="pitch-slider" type="range" min="0" max="2" step="0.1" value="1">
+        <br>
+        <br>
+        <strong class="label-volume">Rate</strong>
+        <br>
+        <!-- Specs say min=0.1 and max=10 -->
+        <!-- Chrome can't go lower then 0.5 or higher then 3.6 - non local voices also have different range values -->
+        <input data-ui="rate-slider" type="range" min="0.5" max="3.6" step="0.1" value="1">
+        <br>
+        <br>
+        <p class="debug-msg"></p>
+      </div>
+
+    </section>
+    <script src="./index_files/main.201a4551.js"></script>
+</body></html>
