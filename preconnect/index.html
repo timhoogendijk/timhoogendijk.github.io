@@ -3,11 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <title>preconnect test</title>
-        <link rel="preconnect" href="https://example.org/">
+        <!-- <link rel="preconnect" href="https://example.org/">
         <link rel="preconnect" href="https://www.example.org/">
-        <link rel="preconnect" href="https://www.nrc.nl/">
+        <link rel="preconnect" href="https://www.nrc.nl/"> -->
         <link rel="preconnect" href="https://images.nrc.nl/">
   </head>
   <body>
+
+	<script>
+		setTimeout(function() {
+			document.body.innerHTML = '<img src="https://images.nrc.nl/Md8Ig5xBjT9KjDGsw_2T8rANdws=/1920x/filters:no_upscale()/s3/static.nrc.nl/bvhw/files/2020/05/data57949532-3f3a8b.jpg" />';
+
+		}, 2000);
+	</script>
   </body>
 </html>
