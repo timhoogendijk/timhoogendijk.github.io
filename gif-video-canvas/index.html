@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="nl">
+	<head>
+	<meta charset="UTF-8">
+	<title>Compare GIF to video and canvas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			body {
+				padding: 12px;
+				color: white;
+				font-family: sans-serif;
+				font-size: 16px;
+				background-color: #333;
+			}
+
+			canvas,
+			video,
+			img {
+				box-sizing: border-box;
+				width: 500px;
+				height: 300px;
+				display: block;
+				margin-bottom: 12px;
+				border: 0;
+				background-color: transparent;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>Bloedplasma</h3>
+
+		<h4>GIF (4,6mb)</h4>
+
+		<img src="video/bloedplasma.gif" alt="" />
+
+		<h4>Video (67kb webm / 118kb mp4) </h4>
+
+		<video class="video1" autoplay muted playsinline loop>
+			<source src="video/bloedplasma.webm" type="video/webm" />
+			<source src="video/bloedplasma.mp4" type="video/mp4" />
+		</video>
+
+		<h4>Canvas (video als bron)</h4>
+
+		<canvas class="canvas1"></canvas>
+
+		<h3>Zon</h3>
+
+		<h4>GIF (2,2mb)</h4>
+
+		<img src="video/slow.gif" alt="" />
+
+		<h4>Video (58kb webm / 182kb mp4) </h4>
+
+		<video class="video2" autoplay muted playsinline loop>
+			<source src="video/slow.webm" type="video/webm" />
+			<source src="video/slow.mp4" type="video/mp4" />
+		</video>
+
+		<h4>Canvas (video als bron)</h4>
+
+		<canvas class="canvas2"></canvas>
+
+		<script>
+			function clearCanvas(canvasEl, ctx) {
+				ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+			}
+
+			function drawVideo(videoEl, canvasEl, ctx) {
+				clearCanvas(canvasEl, ctx);
+				ctx.drawImage(videoEl, 0, 0, canvasEl.width, canvasEl.height);
+
+				requestAnimationFrame(function() {
+					drawVideo(videoEl, canvasEl, ctx);
+				});
+			}
+
+			var retinaCanvas = false;
+			var videoEl1 = document.querySelector('.video1');
+			var videoEl2 = document.querySelector('.video2');
+			var canvasEl1 = document.querySelector('.canvas1');
+			var canvasEl2 = document.querySelector('.canvas2');
+
+			var canvasConf = {
+				alpha: true,
+				desynchronized: true
+			};
+
+			var ctx1 = canvasEl1.getContext('2d', canvasConf);
+			var ctx2 = canvasEl2.getContext('2d', canvasConf);
+
+			videoEl1.addEventListener('play', () => {
+				drawVideo(videoEl1, canvasEl1, ctx1);
+			});
+			videoEl2.addEventListener('play', () => {
+				drawVideo(videoEl2, canvasEl2, ctx2);
+			});
+		</script>
+	</body>
+</html>
