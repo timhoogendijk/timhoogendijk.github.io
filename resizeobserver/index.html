@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<meta charset="UTF-8">
+	<title>Protopal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			padding: 12px;
+			font-family: sans-serif;
+			font-size: 16px;
+			color: white;
+			background-color: #333;
+		}
+
+		.resizeable {
+			resize: both;
+			overflow: auto;
+			max-width: 100%;
+		}
+
+		div.resizeable {
+			width: 250px;
+			height: 250px;
+			padding: 24px;
+			width: 748px;
+			height: 400px;
+			border: 1px solid white;
+		}
+
+		h1.resizeable {
+			font-family: 'Lucida Bright', Georgia, sans-serif;
+			font-size: 32px;
+			font-weight: 500;
+			line-height: 100%;
+			word-break: break-word;
+			width: 500px;
+			min-height: 100px;
+			border: 1px dotted darkgrey;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<h3>Resize observer</h3>
+		<p>
+			<ul>
+				<li>IE: no</li>
+				<li>Edge: 79</li>
+				<li>FF: 69</li>
+				<li>Chrome: 64</li>
+				<li>Safari: 13.1</li>
+				<li>iOS Safari: 13.5</li>
+			</ul>
+		</p>
+
+		<div class="resizeable">
+			<h1 class="resizeable" data-flowtype="headline">Het rommelige proces van de fotosynthese</h1>
+		</div>
+	</section>
+	<script>
+		if ('ResizeObserver' in window == false) {
+			alert('this browser does not support resizeObserver :(');
+		}
+
+		const settings = {
+			// Flowtype defaults
+			maximum   : 9999,
+			minimum   : 1,
+			// NMT settings for headline
+			fontRatio: 13,
+			minFont: 32,
+			maxFont: 62
+		};
+
+		const headlineObserver = new ResizeObserver(entries => handleHeadlineObservation(entries));
+		const headlineToObserve = document.querySelector('[data-flowtype="headline"]');
+		headlineObserver.observe(headlineToObserve);
+
+		function handleHeadlineObservation(entries) {
+			const entry = entries[0];
+			const boxWidth = entry.contentRect.width;
+			const width = (boxWidth > settings.maximum ? settings.maximum : (boxWidth < settings.minimum ? settings.minimum : boxWidth));
+			const fontBase = width / settings.fontRatio;
+			const fontSize = (fontBase > settings.maxFont ? settings.maxFont : (fontBase < settings.minFont ? settings.minFont : fontBase));
+			entry.target.style.fontSize = `${fontSize}px`;
+		}
+	</script>
+</body>
+</html>
