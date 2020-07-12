@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
 	<meta charset="UTF-8">
-	<title>Protopal</title>
+	<title>ResizeObserver</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 		* {
@@ -20,7 +20,8 @@
 
 		.resizeable {
 			resize: both;
-			overflow: auto;
+			overflow-y: auto;
+			overflow-x: hidden;
 			max-width: 100%;
 		}
 
@@ -60,7 +61,7 @@
 		</p>
 
 		<div class="resizeable">
-			<h1 class="resizeable" data-flowtype="headline">Het rommelige proces van de fotosynthese</h1>
+			<h1 class="resizeable" data-flowtype="headline" contenteditable>Het rommelige proces van de fotosynthese</h1>
 		</div>
 	</section>
 	<script>
@@ -83,12 +84,15 @@
 		headlineObserver.observe(headlineToObserve);
 
 		function handleHeadlineObservation(entries) {
-			const entry = entries[0];
-			const boxWidth = entry.contentRect.width;
+			this.setFontSize(entries[0].target, entries[0].contentRect.width);
+		}
+
+		function setFontSize(el, boxWidth) {
 			const width = (boxWidth > settings.maximum ? settings.maximum : (boxWidth < settings.minimum ? settings.minimum : boxWidth));
 			const fontBase = width / settings.fontRatio;
 			const fontSize = (fontBase > settings.maxFont ? settings.maxFont : (fontBase < settings.minFont ? settings.minFont : fontBase));
-			entry.target.style.fontSize = `${fontSize}px`;
+
+			el.style.fontSize = `${fontSize}px`;
 		}
 	</script>
 </body>
