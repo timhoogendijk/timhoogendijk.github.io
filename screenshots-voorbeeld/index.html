@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>🎧  DJ tractie screenshots | NRC</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: sans-serif;
+			font-size: 16px;
+			color: white;
+			background-color: #272727;
+		}
+
+		a {
+			color: inherit;
+		}
+
+		a:target {
+			color: red;
+		}
+
+		a:hover {
+			color: red;
+		}
+
+		.expand-link:target {
+			position: sticky;
+			top: 0;
+
+			background-color: #272727;
+			width: 100%;
+			display: block;
+			padding-top: 3px;
+			padding-bottom: 3px;
+			margin: 0;
+		}
+
+		.expand-link:target h3 {
+			margin: 0;
+			padding: 0;
+		}
+
+		.expand-link:target + .images {
+			display: block;
+		}
+
+		.expand-link:target + .images + .expand-link {
+			position: sticky;
+			bottom: 0;
+
+			background-color: #272727;
+			width: 100%;
+			display: block;
+			padding-top: 3px;
+			padding-bottom: 3px;
+			margin: 0;
+		}
+
+		.expand-link:target + .images + .expand-link h3 {
+			margin: 0;
+			padding: 0;
+		}
+
+		.images {
+			display: none;
+			overflow: hidden;
+			width: 100%;
+			padding: 0;
+			margin: 0;
+		}
+
+		.images li {
+			width: calc(50% - 6px);
+			float: left;
+			overflow: hidden;
+			margin-bottom: 12px;
+		}
+
+		.images li:first-child {
+			margin-right: 12px;
+		}
+
+		.images li img {
+			width: 100%;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>DJ Tractie screenshots</h1>
+
+	<div class="content"></div>
+
+	<script src="js/app.js"></script>
+</body>
+</html>
