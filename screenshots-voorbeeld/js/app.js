@@ -15,7 +15,7 @@ function subheading(key, nestedKey, text) {
 }
 
 function image(imageURL) {
-	return `<img data-src="../screenshots/${imageURL}" alt="" />`;
+	return `<img data-src="screenshots/${imageURL}" alt="" />`;
 }
 
 xhr.addEventListener('load', () => {
